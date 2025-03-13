@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: hostel-app
+    restart: unless-stopped
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    volumes:
+      - ./src:/usr/src/app/src
+      - /usr/src/app/node_modules
+    command: npm run start:dev

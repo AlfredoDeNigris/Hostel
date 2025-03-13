@@ -1,0 +1,42 @@
+{
+  "name": "hostel",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "jest --watchAll"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfredoDeNigris/Hostel.git"
+  },
+  "author": "De Nigris, Alfredo Ignacio Hernan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlfredoDeNigris/Hostel/issues"
+  },
+  "homepage": "https://github.com/AlfredoDeNigris/Hostel#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  },
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0"
+  }
+}
