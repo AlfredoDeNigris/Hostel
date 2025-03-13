@@ -1,0 +1,50 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+      MYSQL_USER: ${{ secrets.MYSQL_USER }}
+      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+      MYSQL_PORT: ${{ vars.MYSQL_PORT }}
+      JWT_EXPIRES: ${{ vars.JWT_EXPIRES }}
+      SERVER_PORT: ${{ vars.SERVER_PORT }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Create .env file
+        run: |
+          echo "MYSQL_HOST=${{ env.MYSQL_HOST }}" >> .env
+          echo "MYSQL_USER=${{ env.MYSQL_USER }}" >> .env
+          echo "MYSQL_PASSWORD=${{ env.MYSQL_PASSWORD }}" >> .env
+          echo "MYSQL_DATABASE=${{ env.MYSQL_DATABASE }}" >> .env
+          echo "MYSQL_PORT=${{ env.MYSQL_PORT }}" >> .env
+          echo "JWT_SECRET=${{ env.JWT_SECRET }}" >> .env
+          echo "JWT_EXPIRES=${{ env.JWT_EXPIRES }}" >> .env
+          echo "SERVER_PORT=${{ env.SERVER_PORT }}" >> .env
+
+      - name: Run tests
+        run: npm test
