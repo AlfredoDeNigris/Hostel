@@ -21,7 +21,7 @@ describe('envConfig.js', () => {
         jest.restoreAllMocks();
     });
 
-    test('getEnvVarsFromFile debería devolver todas las variables de entorno', () => {
+    test('getEnvVarsFromFile should return all environment variables', () => {
         const envVars = envConfig.getEnvVarsFromFile();
         expect(envVars).toEqual([
             'MYSQL_HOST',
@@ -35,7 +35,7 @@ describe('envConfig.js', () => {
         ]);
     });
 
-    test('getEnvVarsFromFile debería lanzar error si el archivo .env no existe', () => {
+    test('getEnvVarsFromFile should throw an error if the .env file does not exist', () => {
         const processExitSpy = jest.spyOn(process, 'exit').mockImplementation(() => { });
 
         jest.spyOn(fs, 'existsSync').mockReturnValue(false);
@@ -45,7 +45,7 @@ describe('envConfig.js', () => {
         expect(processExitSpy).toHaveBeenCalledWith(1);
     });
 
-    test('validateEnvVars debería detectar variables faltantes', () => {
+    test('validateEnvVars should detect missing variables', () => {
         process.env = {
             MYSQL_HOST: 'localhost',
             MYSQL_PASSWORD: '1234',
@@ -61,7 +61,7 @@ describe('envConfig.js', () => {
         expect(processExitSpy).toHaveBeenCalledWith(1);
     });
 
-    test('validateEnvVars debería pasar si todas las variables están definidas', () => {
+    test('validateEnvVars should pass if all variables are defined', () => {
         process.env = {
             MYSQL_HOST: 'localhost',
             MYSQL_USER: 'root',

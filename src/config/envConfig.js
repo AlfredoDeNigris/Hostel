@@ -17,12 +17,12 @@ export const getEnvVarsFromFile = () => {
 
     const envFileContent = fs.readFileSync(envFilePath, 'utf-8');
 
-    //Extrae las claves de las variables de entorno (las partes antes del "=")
+    //Extract the keys of the environment variables (the parts before the '=')
     return envFileContent
-        .split('\n') // Divide el contenido en líneas
-        .map(line => line.trim()) // Elimina espacios en blanco
-        .filter(key => key && !key.startsWith('#')) // Filtra comentarios y líneas vacías
-        .map(line => line.split('=')[0].trim()); //Extrae solo la clave de cada línea
+        .split('\n') //Split the content into lines
+        .map(line => line.trim()) //Remove whitespace
+        .filter(key => key && !key.startsWith('#')) //Filter out comments and empty lines
+        .map(line => line.split('=')[0].trim()); //Extract only the key from each line
 };
 
 export const validateEnvVars = () => {
