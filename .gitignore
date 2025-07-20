@@ -19,6 +19,9 @@ coverage/
 lib-cov/
 build/Release/
 
+# Output and transpilation (TypeScript, Babel, etc.)
+dist/
+
 # Dependency directories
 bower_components/
 jspm_packages/
@@ -37,6 +40,10 @@ node_repl_history
 
 # dotenv environment variables
 .env
+.env.dev
+
+# Docker (opcional)
+docker-compose.override.yml
 
 # Database files
 db-data/

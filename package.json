@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/AlfredoDeNigris/Hostel.git"
   },
-  "author": "De Nigris, Alfredo Ignacio Hernan",
+  "author": "Ignacio De Nigris <ignaciodenigris@gmail.com> (https://github.com/AlfredoDeNigris)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlfredoDeNigris/Hostel/issues"
